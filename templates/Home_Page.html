@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID 6.0 Competition Team</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and page setup */
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #FF00FF, #FF4500, #00FF7F, #1E90FF, #8A2BE2);
+            background-size: 600% 600%;
+            animation: gradientBG 7s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 50% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            75% {
+                background-position: 50% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Particle animation */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 4s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-30px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Vibrant landing section with full screen view */
+        .landing {
+            height: 50vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: white;
+            overflow: hidden;
+        }
+
+        .landing h1 {
+            font-size: 2.5em;
+            text-align: center;
+            overflow: hidden; /* Ensures the text is clipped */
+            white-space: nowrap; /* Prevents wrapping */
+            animation: textAppear 2s ease-out forwards, textPulse 3s ease-in-out infinite, draw 4s;
+            text-shadow: none; /* Remove the shadow */
+        }
+
+        @keyframes textAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textPulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes draw {
+            0% {
+                width: 0;
+                opacity: 1;
+            }
+
+            100% {
+                width: 100%;
+                opacity: 1;
+            }
+        }
+
+        /* Smooth scroll styles */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Scroll button */
+        .scroll-btn {
+            position: absolute;
+            bottom: 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            animation: buttonBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes buttonBounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Main content section */
+        .content {
+            background-color: #f4f4f4;
+            padding: 50px;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Header and team title */
+        header {
+            background-color: rgba(40, 44, 52, 0.8);
+            color: #61dafb;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-name,
+        .competition-title {
+            font-size: 3em;
+            color: whitesmoke;
+            text-shadow: 0 0 5px #ff0055, 0 0 10px #ff0055, 0 0 15px #ff007f, 0 0 20px #ff007f, 0 0 25px #ff00b3, 0 0 30px #ff00b3;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 15px #BF00FF;
+            }
+
+            to {
+                text-shadow: 0 0 10px #39FF14, 0 0 20px #BF00FF, 0 0 30px #BF00FF, 0 0 40px #BF00FF;
+            }
+        }
+
+        /* Task section */
+        section {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        section:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        button {
+            background-color: #61dafb;
+            color: #282c34;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #21a1f1;
+        }
+
+        h1 {
+            font-size: 3em; /* Increase font size for better visibility */
+            text-align: center;
+            margin-top: 20px;
+            text-shadow: 0 0 5px rgba(239, 11, 37, 0.8), 0 0 10px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 0, 0, 0.6); /* 3D effect */
+        }
+
+        .header-image {
+            width: 100%; /* Full width */
+            height: 50vh; /* Full height for half of the viewport */
+            object-fit: cover; /* Cover the entire container without cropping */
+            border-radius: 15px; /* Curved edges */
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            color: #ffffff;
+            background-color: #333;
+            width: 100%;
+        }
+
+        #task-1-model,
+        #task-2-model,
+        #task-3-model {
+            display: none;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: transform 0.5s, opacity 0.5s;
+        }
+
+        .show {
+            display: block;
+            animation: slideIn 0.5s forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename = 'top.png') }}" alt="Description of the image" class="header-image" />
+    </header>
+    <!-- Particle Animation -->
+    <div class="particles">
+        <div class="particle" style="width: 10px; height: 10px; background: #ff00ff; top: 20%; left: 10%;"></div>
+        <div class="particle" style="width: 15px; height: 15px; background: #ff4500; top: 50%; left: 20%;"></div>
+        <div class="particle" style="width: 8px; height: 8px; background: #00ff7f; top: 80%; left: 30%;"></div>
+        <div class="particle" style="width: 12px; height: 12px; background: #1e90ff; top: 30%; left: 40%;"></div>
+        <div class="particle" style="width: 9px; height: 9px; background: #8a2be2; top: 60%; left: 50%;"></div>
+    </div>
+
+    <!-- Vibrant landing section -->
+    <div class="landing">
+        <h1>Qurious Sharks: Making Waves in Innovation!</h1>
+        <a href="#main-content" class="scroll-btn">Scroll Down</a>
+    </div>
+
+    <!-- Main content section -->
+    <header id="main-content">
+        <h1 class="team-name">Qurious Sharks</h1>
+        <h2 class="competition-title">Flipkart GRID 6.0 Robotics Challenge</h2>
+    </header>
+
+    <main>
+        <section id="task-1">
+            <h2>Task 1: Brand Recognition Count Model and OCR Recognition of Label Details</h2>
+            <p>Brand recognition and counting & Extracting packaging details and retrieve expiry/MRP using OCR</p>
+            <a href="{{ url_for('BrandOCR') }}">
+                <button>View Model</button>
+            </a>
+            <div id="task-1-model"></div>
+        </section>
+        <section id="task-3">
+            <h2>Task 2: Detecting Freshness of Fresh Produce</h2>
+            <p>Predicting shelf life of fresh fruits and vegetables.</p>
+            <a href="{{ url_for('Freshness') }}">
+                <button>View Model</button>
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Qurious Sharks. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
