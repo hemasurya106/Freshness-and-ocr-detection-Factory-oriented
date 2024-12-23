@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lively Dummy Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #mainframe {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff9b90;
+            transform: scale(1.1);
+        }
+
+        form button {
+            background-color: #4caf50;
+        }
+
+        form button:hover {
+            background-color: #81c784;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        #mainframe {
+            animation: fadeIn 2s ease;
+        }
+
+        .step-description {
+            font-size: 16px;
+            color: #ddd;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        // Function to send POST request with JSON data
+        function sendAction(action) {
+            fetch('{{ url_for("BrandOCR") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',  // Send JSON data
+                },
+                body: JSON.stringify({
+                    action: action  // Send the action as JSON
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);  // Handle the response from the backend
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <section id="mainframe">
+        <h1><strong> WELCOME TO THE BRAND DETECTION AND OCR MODEL</strong></h1>
+        <p>Choose an action below accorrding to the various steps given:</p>
+        <p>Possible brands for this models are Colgate,Dettol,Classmate,Himalaya and Kelloggs</p>
+        <!-- Buttons for sending actions -->
+        <p class="step-description">Step 1: Initiating the process. This is where the action begins, and you will set up the environment for the next steps.</p>
+        <button onclick="sendAction('clickHere')">START HERE</button>
+        <p class="step-description">Step 2: The intermediate stage. Here, we evaluate the progress and make necessary adjustments before moving forward.</p>
+        <button onclick="sendAction('quit1')">QUIT-1</button>
+        <p class="step-description">Step 3: Reaching the critical point. This step involves making decisions based on the earlier results and preparing for the final action.
+            Here please show all the images in the same order as you did in previous steps to capture the different ocr images.To capture any image press 'c' in your keyboard and continue till all the images are being captured.
+        </p>
+        <button onclick="sendAction('clickHereAgain')">START AGAIN FOR OCR</button>
+        <p class="step-description">Step 4: Finalizing the process. Here, we review all previous steps and conclude the action.</p>
+        <button onclick="sendAction('quitFinal')">PAUSE CAMERA</button>
+        <form method="POST" action="{{ url_for('BrandOCR_Result') }}">
+            <input type="hidden" name="action" value="Result">
+            <button type="SUBMIT">RESULT</button>
+        </form>
+        <a href="{{ url_for('Home') }}" style = "color:white">Go Back</a>
+    </section>
+
+    
+</body>
+</html>
