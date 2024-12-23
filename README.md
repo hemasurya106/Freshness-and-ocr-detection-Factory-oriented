@@ -1,0 +1,1 @@
+# Freshness-and-ocr-detection-Factory-oriented
