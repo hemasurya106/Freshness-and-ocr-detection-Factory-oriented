@@ -1,6 +1,0 @@
-Flask
-opencv-python
-ultralytics
-tensorflow
-keras
-pytesseract
