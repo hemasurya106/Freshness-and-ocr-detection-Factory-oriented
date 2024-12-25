@@ -65,7 +65,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 @app.route("/", methods=["GET"])
 def Home():
     if request.method == "GET":
-        return render_template("Home_Page.html",)
+        return render_template("index.html",)
     else:
         return render_template("Error_Page.html")
 
