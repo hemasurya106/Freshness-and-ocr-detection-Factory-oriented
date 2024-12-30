@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result Page</title>
+    <style>
+        /* Ensure the html and body elements take up the full height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        /* Body Styles */
+        body {
+
+            background-size: cover;
+            background-position: center;
+            background-color:#1280ca; /* Fallback color */
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            text-align: center;
+        }
+
+        /* Table Container Styling */
+        #table-container {
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            width: 80%; /* Width of the table container */
+            max-width: 1200px;
+            overflow-x: auto; /* Allows scrolling if the table overflows */
+            margin-top: 20px;
+        }
+
+        /* Table Styles */
+        /* Table Container Styles */
+    #table-container {
+        padding: 30px;
+        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+        border-radius: 15px;
+  
+        width: 80%; /*Width of the table container */
+        max-width: 1200px;
+        margin: 0 auto; /* Center the table container horizontally */
+        overflow-x: auto; /* Allows scrolling if the table overflows */
+        margin-top: 20px;
+    }
+
+
+
+
+        /* Table Header Styles */
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50; /* Green background for header */
+            font-size: 18px;
+        }
+
+        td {
+            background-color: #555; /* Dark grey background for table cells */
+            font-size: 16px;
+        }
+
+        /* Alternate Row Coloring */
+        tr:nth-child(even) td {
+            background-color: #777; /* Lighter grey for even rows */
+        }
+
+        /* Hover Effect */
+        tr:hover {
+            background-color: #333; /* Dark hover effect */
+        }
+
+        /* Heading Style */
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            color:BLACK;
+        }
+    </style>
+</head>
+<body>
+    <section id="mainframe">
+        <h1>THE RESULTS FOR THE MODEL IS GIVEN BELOW</h1>
+        <div id="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Timestamp</th>
+                        <th>Brand</th>
+                        <th>Expiry Date</th>
+                        <th>Count</th>
+                        <th>Expired</th>
+                        <th>Expected Life Span (Days)</th>
+                        <th>MRP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through rows to display each tuple -->
+                    {% for row in rows %}
+                        <tr>
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+                            <td>{{ row[5] }}</td>
+                            <td>{{ row[6] }}</td>
+                            <td>{{ row[7] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ url_for('BrandOCR') }}" style = "color:white">Go Back</a>
+        </div>
+    </section>    
+</body>
+</html>
