@@ -48,3 +48,4 @@ Acknowledgments
 Google Cloud Vision API for OCR capabilities.
 Norfair for object tracking.
 Flask for the web framework.
+
